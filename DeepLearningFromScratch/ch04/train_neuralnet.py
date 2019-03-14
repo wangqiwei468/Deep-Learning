@@ -12,6 +12,7 @@ from two_layer_net import TwoLayerNet
 
 network = TwoLayerNet(input_size=784, hidden_size=50, output_size=10)
 
+# 超参数
 iters_num = 10000  # 适当设定循环的次数
 train_size = x_train.shape[0]
 batch_size = 100
@@ -20,7 +21,7 @@ learning_rate = 0.1
 train_loss_list = []
 train_acc_list = []
 test_acc_list = []
-
+# 平均每个epoch的重复次数
 iter_per_epoch = max(train_size / batch_size, 1)
 
 for i in range(iters_num):
@@ -38,7 +39,7 @@ for i in range(iters_num):
 
     loss = network.loss(x_batch, t_batch)
     train_loss_list.append(loss)
-
+    # 计算每个epoch的识别精度
     if i % iter_per_epoch == 0:
         train_acc = network.accuracy(x_train, t_train)
         test_acc = network.accuracy(x_test, t_test)
